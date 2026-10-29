@@ -330,7 +330,7 @@ with tab1:
     c1, c2 = st.columns([2, 1])
     with c1:
         fig_eg = plot_bandgap_vs_radius(active_params, active_radius, radius_min_nm=0.8, radius_max_nm=10.0)
-        st.plotly_chart(fig_eg, use_container_width=True)
+        st.plotly_chart(fig_eg, width="stretch")
 
     with c2:
         st.markdown("#### 📊 Energy Breakdown (Brus Model)")
@@ -349,7 +349,7 @@ with tab1:
     st.markdown("---")
     st.markdown("### 📈 Emission Wavelength vs. Radius")
     fig_wl = plot_wavelength_vs_radius(active_params, active_radius, radius_min_nm=0.8, radius_max_nm=10.0)
-    st.plotly_chart(fig_wl, use_container_width=True)
+    st.plotly_chart(fig_wl, width="stretch")
 
 # ==========================================
 # TAB 2: Photoluminescence Emission Spectrum
@@ -380,7 +380,7 @@ with tab2:
             fwhm_nm=fwhm_slider,
             peak_intensity=intensity_slider
         )
-        st.plotly_chart(fig_spec, use_container_width=True)
+        st.plotly_chart(fig_spec, width="stretch")
 
 # ==========================================
 # TAB 3: Material Comparison
@@ -399,11 +399,11 @@ with tab3:
         tab_comp_eg, tab_comp_wl = st.tabs(["Bandgap vs. Radius", "Wavelength vs. Radius"])
         with tab_comp_eg:
             fig_comp_eg = plot_material_comparison(materials_dict, selected_comp_materials, plot_type="bandgap")
-            st.plotly_chart(fig_comp_eg, use_container_width=True)
+            st.plotly_chart(fig_comp_eg, width="stretch")
 
         with tab_comp_wl:
             fig_comp_wl = plot_material_comparison(materials_dict, selected_comp_materials, plot_type="wavelength")
-            st.plotly_chart(fig_comp_wl, use_container_width=True)
+            st.plotly_chart(fig_comp_wl, width="stretch")
 
         # Comparison Table
         st.markdown("#### 📋 Material Parameter Reference Table")
@@ -431,7 +431,7 @@ with tab3:
             })
 
         df_comp = pd.DataFrame(table_rows)
-        st.dataframe(df_comp, use_container_width=True, hide_index=True)
+        st.dataframe(df_comp, width="stretch", hide_index=True)
 
 # ==========================================
 # TAB 4: Alloy Composition Engineering
@@ -486,7 +486,7 @@ with tab4:
             bowing_parameter_eV=bowing_b,
             current_x=x_comp
         )
-        st.plotly_chart(fig_alloy_curve, use_container_width=True)
+        st.plotly_chart(fig_alloy_curve, width="stretch")
 
     st.markdown("---")
     st.markdown("#### 🗺️ 2D Bandgap Mapping: Radius vs. Alloy Composition")
@@ -497,7 +497,7 @@ with tab4:
         radius_min_nm=1.0,
         radius_max_nm=8.0
     )
-    st.plotly_chart(fig_heatmap, use_container_width=True)
+    st.plotly_chart(fig_heatmap, width="stretch")
 
 # ==========================================
 # TAB 5: Core/Shell Band Alignment
@@ -538,7 +538,7 @@ with tab5:
 
     with col_align2:
         fig_band_diag = plot_core_shell_band_diagram(core_shell_struct, sim_results=num_res)
-        st.plotly_chart(fig_band_diag, use_container_width=True)
+        st.plotly_chart(fig_band_diag, width="stretch")
 
 # ==========================================
 # TAB 6: Carrier Wavefunctions & Localization
@@ -572,7 +572,7 @@ with tab6:
 
     st.markdown("#### 🎯 Spatial Probability Densities")
     fig_wf = plot_probability_densities(num_res, plot_type="density")
-    st.plotly_chart(fig_wf, use_container_width=True)
+    st.plotly_chart(fig_wf, width="stretch")
 
     col_loc1, col_loc2 = st.columns(2)
     with col_loc1:
@@ -626,7 +626,7 @@ with tab7:
             {"Model Level": "Level 2: Numerical Schrödinger (Unstrained)", "Predicted Gap (eV)": f"{unstrained_gap:.3f}", "Wavelength (nm)": f"{bandgap_to_wavelength(unstrained_gap):.1f}"},
             {"Model Level": "Level 3: Numerical Schrödinger + Strain Correction", "Predicted Gap (eV)": f"{strained_gap:.3f}", "Wavelength (nm)": f"{bandgap_to_wavelength(strained_gap):.1f}"},
         ])
-        st.dataframe(df_fid, use_container_width=True, hide_index=True)
+        st.dataframe(df_fid, width="stretch", hide_index=True)
 
 # ==========================================
 # TAB 8: Scientific Foundations & Assumptions
